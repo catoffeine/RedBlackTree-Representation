@@ -5,7 +5,7 @@
 #define RED 1
 #define BLACK 0
 
-//#define DBG
+// #define DBG
 
 #ifdef DBG
 
@@ -144,39 +144,6 @@ RBNode_t * addValue(RBNode_t **root, RBNode_value_t value, int *ERROR_CODE) {
     return newNode;
 }
 
-//void blackDeleteBalanceTree(RBNode_t *Node, int *ERROR_CODE) {
-//    PRINT_IF_DBG(1, "BEGIN function blackDeleteBalanceTree");
-//    RBNode_t *root;
-//    if (!Node) {
-//        *ERROR_CODE = 3;
-//        return;
-//    }
-//
-//    if (nodeColor(Node)) return;
-//
-//    root = findRoot(Node);
-//
-//    if (Node == root) {
-//        root->color = BLACK;
-//        return;
-//    }
-//
-//    if (Node->parent) { //Если существует родитель удаляемого элемента
-//        if (Node->parent->left == Node) {
-//           if (nodeColor(Node->parent->right)) { //Брат - красный
-//
-//
-//
-//           }
-//        }
-//    }
-//
-//    root = findRoot(Node);
-//    root->color = BLACK;
-//
-//    PRINT_IF_DBG(1, "END function blackDeleteBalanceTree");
-//}
-
 void blackDeleteBalanceTree(RBNode_t *Node, int *ERROR_CODE) {
     PRINT_IF_DBG(1, "BEGIN function blackDeleteBalanceTree");
     RBNode_t *root;
@@ -195,7 +162,7 @@ void blackDeleteBalanceTree(RBNode_t *Node, int *ERROR_CODE) {
     }
 
     if (nodeColor(Node)) return;
-
+    
     if (Node->parent) { //Если существует родитель удаляемого элемента
         PRINT_IF_DBG(1, "PARENT EXIST");
         if (Node->parent->left == Node) { //Если удаляемый элемент находится слева
@@ -371,63 +338,6 @@ void blackDeleteBalanceTree(RBNode_t *Node, int *ERROR_CODE) {
     root->color = BLACK;
     PRINT_IF_DBG(1, "END function blackDeleteBalanceTree");
 }
-//                if (nodeColor(Node->parent->right)) { //Если брат - красный
-//                    leftBigRotate(Node->parent, ERROR_CODE);
-//                    if (*ERROR_CODE) return;
-//                    blackDeleteBalanceTree(Node, ERROR_CODE);
-//                } else if(!Node->parent->color && !Node->parent->right->color
-//                        && !nodeColor(Node->parent->right->left) && !nodeColor(Node->parent->right->right)) {
-//                    Node->parent->right->color = RED;
-//                    blackDeleteBalanceTree(Node->parent, ERROR_CODE);
-//                } else if (Node->parent->color && !Node->parent->right->color
-//                        && !nodeColor(Node->parent->right->left) && !nodeColor(Node->parent->right->right)) {
-//                    Node->parent->right->color = RED;
-//                    Node->parent->color = BLACK;
-//                } else if (!Node->parent->right->color && !nodeColor(Node->parent->right->right) && nodeColor(Node->parent->right->left)) {
-//                   rightBigRotate(Node->parent->right, ERROR_CODE);
-//                   if (*ERROR_CODE) {
-//                        PRINT_EC
-//                        return;
-//                   }
-//                   Node->parent->right->color = Node->parent->color;
-//                   Node->parent->color = BLACK;
-//                   if (Node->parent->right->right) Node->parent->right->right->color = BLACK;
-//                   leftBigRotate(Node->parent, ERROR_CODE);
-//                }
-//            } else {
-//                *ERROR_CODE = 9; //т.к удаляемый элемент - черный и у него есть родитель он обязан иметь брата
-//                return;
-//            }
-
-//                if (nodeColor(Node->parent->left)) { //Если брат - красный
-//                    rightBigRotate(Node->parent, ERROR_CODE);
-//                    if (*ERROR_CODE) return;
-//                    blackDeleteBalanceTree(Node, ERROR_CODE);
-//                } else if(!Node->parent->color && !Node->parent->left->color
-//                        && !nodeColor(Node->parent->left->left) && !nodeColor(Node->parent->left->right)) {
-//                    Node->parent->left->color = RED;
-//                    blackDeleteBalanceTree(Node->parent, ERROR_CODE);
-//                } else if (Node->parent->color && !Node->parent->left->color
-//                        && !nodeColor(Node->parent->left->left) && !nodeColor(Node->parent->left->right)) {
-//                    Node->parent->left->color = RED;
-//                    Node->parent->color = BLACK;
-//                } else if (!Node->parent->left->color && !nodeColor(Node->parent->left->left) && nodeColor(Node->parent->left->right)) {
-//                   leftBigRotate(Node->parent->left, ERROR_CODE);
-//                   if (*ERROR_CODE) {
-//                        PRINT_EC
-//                        return;
-//                   }
-//                   Node->parent->left->color = Node->parent->color;
-//                   Node->parent->color = BLACK;
-//                   if (Node->parent->left->left) Node->parent->left->left->color = BLACK;
-//                   rightBigRotate(Node->parent, ERROR_CODE);
-//                }
-//            } else {
-//                *ERROR_CODE = 9; //т.к удаляемый элемент - черный и у него есть родитель он обязан иметь брата
-//                return;
-//            }
-//        }
-//    }
 
 
 void deleteNode(RBNode_t **root, RBNode_value_t value, int *ERROR_CODE) {
